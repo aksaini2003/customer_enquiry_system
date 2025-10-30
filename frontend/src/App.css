@@ -1,0 +1,247 @@
+/* --- :root ---
+ * Define all global design tokens (colors, fonts, spacing) here.
+ * This makes it easy to update the entire look and feel from one place.
+ */
+:root {
+  /* Colors - New "Soft Lavender" Theme (Light) */
+  --color-primary: #7950f2; /* Soft Purple */
+  --color-primary-hover: #6741d9;
+  --color-primary-focus-shadow: rgba(121, 80, 242, 0.2);
+
+  --color-danger: #e03131; /* Rich Red */
+  --color-danger-hover: #c92a2a;
+  --color-danger-bg: rgba(224, 49, 49, 0.05);
+
+  --color-success: #2f9e44; /* Rich Green */
+  --color-success-bg: rgba(47, 158, 68, 0.05);
+
+  --color-text-primary: #1f2937; /* Dark Gray for text */
+  --color-text-secondary: #6b7280; /* Medium Gray */
+  --color-text-on-primary: #ffffff;
+
+  --color-bg: #f5f3f9; /* Light Lavender background */
+  --color-surface: #ffffff; /* Pure White Card/Surface */
+  --color-border: #e5e7eb; /* Light Gray borders */
+  --color-table-header: #f8f7fa; /* Very Light Gray table header */
+
+  /* Typography */
+  --font-family-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  
+  /* Spacing & Sizing */
+  --spacing-unit: 8px;
+  --border-radius-sm: 6px;
+  --border-radius-md: 10px;
+
+  /* Transitions */
+  --transition-fast: all 0.2s ease-in-out;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* --- Global & Body --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Main App Container --- */
+.App {
+  max-width: 900px;
+  margin: calc(var(--spacing-unit) * 6) auto;
+  padding: calc(var(--spacing-unit) * 4);
+  background: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  /* Add overflow-x: hidden to absolutely prevent content from spilling out */
+  overflow-x: hidden;
+  border: none; /* Remove dark mode border */
+}
+
+.App h1 {
+  text-align: center;
+  color: var(--color-text-primary);
+  font-size: 2.25rem;
+  font-weight: 600;
+  margin-block-start: 0;
+  margin-block-end: calc(var(--spacing-unit) * 4);
+}
+
+/* --- Search --- */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: calc(var(--spacing-unit) * 4);
+}
+
+.search-bar {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* --- Forms --- */
+.enquiry-form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing-unit) * 2);
+  margin-bottom: calc(var(--spacing-unit) * 5);
+}
+
+/* Common styles for text inputs */
+.search-bar,
+.enquiry-form input,
+.enquiry-form textarea {
+  width: 100%;
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-fast);
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+.search-bar:focus,
+.enquiry-form input:focus,
+.enquiry-form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-focus-shadow);
+  background-color: var(--color-surface); /* Revert bg on focus */
+}
+
+.enquiry-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.enquiry-form button {
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.enquiry-form button:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- Alert Messages --- */
+.alert-message {
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+  border-radius: var(--border-radius-sm);
+  margin-top: var(--spacing-unit);
+  border-left-width: 4px;
+  border-left-style: solid;
+}
+
+.success-message {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border-left-color: var(--color-success);
+}
+
+.error-message {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
+  border-left-color: var(--color-danger);
+}
+
+/* --- Table --- */
+.enquiry-table-container {
+  overflow-x: auto; /* This will add a horizontal scrollbar if needed */
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+}
+
+.enquiry-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.enquiry-table th,
+.enquiry-table td {
+  padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.enquiry-table th {
+  background-color: var(--color-table-header);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap; /* Keep headers on one line */
+}
+
+/* --- THIS IS THE FIX --- */
+.enquiry-table td {
+  white-space: normal; /* Allow cell content to wrap */
+  word-break: break-word; /* Break long strings (like emails) */
+  color: var(--color-text-primary); /* Ensure table text is dark */
+}
+
+/* Target the last cell in any row to keep the button intact */
+.enquiry-table tr td:last-child {
+  white-space: nowrap;
+  width: 1%; /* Makes column just wide enough for the button */
+}
+/* --- END OF FIX --- */
+
+
+/* Remove bottom border from last table row */
+.enquiry-table tr:last-child th,
+.enquiry-table tr:last-child td {
+  border-bottom: none;
+}
+
+.enquiry-table tr:hover {
+  background-color: var(--color-table-header);
+}
+
+.delete-button {
+  padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.5);
+  background-color: var(--color-danger);
+  color: var(--color-text-on-primary);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.delete-button:hover {
+  background-color: var(--color-danger-hover);
+  transform: translateY(-1px);
+}
+
+/* --- Divider --- */
+.divider {
+  border: none;
+  height: 1px;
+  background-color: var(--color-border);
+  margin: calc(var(--spacing-unit) * 5) 0;
+}
+
