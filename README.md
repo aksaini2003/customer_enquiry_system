@@ -1,4 +1,4 @@
-
+Here’s a simple `README.md` file to include in your repository so anyone can clone the project and run it locally:
 
 ```markdown
 # Customer Enquiry System
@@ -137,3 +137,13 @@ root/
 4. Host build folder on static hosting or integrate with backend’s static serving.
 
 ---
+
+## 📄 License & Contributing
+
+
+
+
+
+---
+
+
